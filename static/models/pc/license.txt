@@ -1,0 +1,11 @@
+Model Information:
+* title:	Low Poly Gaming Computer
+* source:	https://sketchfab.com/3d-models/low-poly-gaming-computer-a37c4792ad7142b88599aa4f7251f4a8
+* author:	Digitalis Reality (https://sketchfab.com/digitalisreality)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Low Poly Gaming Computer" (https://sketchfab.com/3d-models/low-poly-gaming-computer-a37c4792ad7142b88599aa4f7251f4a8) by Digitalis Reality (https://sketchfab.com/digitalisreality) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
