@@ -49,13 +49,12 @@ nav {
     overflow-x: hidden;
 }
 
-canvas{
+canvas {
     position: absolute;
-    top:0;
+    top: 0;
     width: 100vw;
     height: 100vh;
 }
-
 
 .nav-links {
     margin-top: 50vh;
@@ -107,7 +106,7 @@ canvas{
     font-size: 1rem;
 }
 
-.hidden{
+.hidden {
     display: none !important;
 }
 
@@ -132,9 +131,35 @@ canvas{
 
 section {
     height: 100vh;
+    color: black;
     display: flex;
+    align-items: center;
     justify-content: center;
-    align-content: center;
-    color: white;
-    scroll-snap-align: start;
+}
+
+/* .projects{
+
+} */
+
+/* .glide {
+    width: 75% !important;
+    /* margin: 0 auto; */
+}
+
+.glide__arrow--left {
+    background-color: slateblue !important;
+    color: white !important;
+}
+
+.glide__arrow--right {
+    background-color: slateblue !important;
+    color: white !important;
+} */
+
+.card {
+    height: 400px;
+    /* background-color: ; */
+    padding-top: 20px;
+    color: black;
+    border-radius: 10%;
 }
