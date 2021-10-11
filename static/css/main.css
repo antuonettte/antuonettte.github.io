@@ -318,6 +318,9 @@ section {
     .container-fluid .row .col-md{
         margin: 0 0;
     }
+    .desc{
+        font-size: 15px;
+    }
     .projects{
         height: 100%;
         margin: 0 50px;
