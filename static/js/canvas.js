@@ -26,7 +26,8 @@ const material = new THREE.MeshStandardMaterial({
     displacementMap: height,
     displacementScale: .5,
     alphaMap: alpha,
-    transparent: true
+    transparent: true,
+    depthTest: false
 })
 
 // Mesh
@@ -43,7 +44,7 @@ plane.rotation.x = 181;
 
 // Lights
 
-const pointLight = new THREE.PointLight(0xffffff, 2)
+const pointLight = new THREE.PointLight(0xffffff, 3)
 pointLight.position.x = 2
 pointLight.position.y = 3
 pointLight.position.z = 4
@@ -93,13 +94,23 @@ scene.add(camera)
 
 
 
+document.addEventListener('mousemove',animateTerrain);
 
+let mouseY = 0
+let mouseX = 0
+
+function animateTerrain(event){
+    mouseY = event.clientY;
+    mouseX = event.clientX;
+}
 
 const clock = new THREE.Clock()
 
 const tick = () => {
 
     const elapsedTime = clock.getElapsedTime()
+
+    // plane.material.displacementScale = 0.4 + mouseY * 0.0002;
 
     // Update objects
     plane.rotation.z += 0.002;
