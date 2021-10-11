@@ -171,6 +171,21 @@ section {
     color: white;
 }
 
+.container-fluid .row .col-md .project{
+    position: relative;
+    margin: 10px 0px;
+    overflow-y: hidden;
+}
+
+.project-caption{
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    bottom:0;
+    left:0;
+    /* background-color: slateblue; */
+}
+
 .projectTitle:hover {
     color: slateblue;
 }
@@ -179,50 +194,7 @@ section {
     display: none;
 }
 
-@media (max-width: 800px) {
-    .container-fluid {
-        display: contents;
-    }
-    .projects{
-        height: 100%;
-        margin: 0 50px;
-        overflow-x: hidden;
-    }
-    .projectTitle {
-        margin-bottom: 20px;
-    }
-    .carousel {
-        display: none;
-    }
-    .big-text {
-        text-align: center;
-    }
-    .me{
-        transform: scale(70%);
-    }
-    .nav-links {
-        margin-top: 30vh;
-        width: 400px;
-        transform: translateX(-40%) rotate(90deg);
-        list-style: none;
-    }
-    
-}
 
-@media (max-width: 600px) {
-    .container-fluid {
-        display: contents;
-    }
-    .carousel {
-        display: none;
-    }
-    .big-text {
-        text-align: center;
-    }
-    .projectTitle {
-        margin-top: 200px;
-    }
-}
 
 /* About */
 
@@ -267,7 +239,7 @@ section {
     font-weight: 500;
 }
 .desc{
-    font-size: 2.5rem;
+    /* font-size: 2.5rem; */
     will-change: transform;
     transition: all 500ms;
 }
@@ -337,3 +309,52 @@ section {
 }
 
 /* About */
+
+
+@media (max-width: 800px) {
+    .container-fluid {
+        display: contents;
+    }
+    .container-fluid .row .col-md{
+        margin: 0 0;
+    }
+    .projects{
+        height: 100%;
+        margin: 0 50px;
+        overflow-x: hidden;
+    }
+    .projectTitle {
+        margin-bottom: 20px;
+    }
+    .carousel {
+        display: none;
+    }
+    .big-text {
+        text-align: center;
+    }
+    .me{
+        transform: scale(70%);
+    }
+    .nav-links {
+        margin-top: 30vh;
+        width: 400px;
+        transform: translateX(-40%) rotate(90deg);
+        list-style: none;
+    }
+    
+}
+
+@media (max-width: 600px) {
+    .container-fluid {
+        display: contents;
+    }
+    .carousel {
+        display: none;
+    }
+    .big-text {
+        text-align: center;
+    }
+    .projectTitle {
+        margin-top: 200px;
+    }
+}
