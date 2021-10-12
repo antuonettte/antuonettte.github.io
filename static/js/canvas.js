@@ -16,7 +16,7 @@ const canvas = document.querySelector('#canvas')
 const scene = new THREE.Scene()
 
 // Objects
-const geometry = new THREE.PlaneBufferGeometry(3,3,64,64)
+const geometry = new THREE.PlaneBufferGeometry(10, 10, 200, 200)
 
 // Materials
 
@@ -27,11 +27,28 @@ const material = new THREE.MeshStandardMaterial({
     displacementScale: .5,
     alphaMap: alpha,
     transparent: true,
-    depthTest: false
+    wireframe: true
 })
+
+// const shaderMat = new THREE.ShaderMaterial({
+//     exxtensions: {
+//         derivatives: "#extension GL_OES_standar_derivatives: enable"
+//     },
+//     side: THREE.DoubleSide,
+//     uniforms: {
+//         time: { type:"f", value: 0},
+//         resolution: {type:"v4", value: new THREE.Vector4()},
+//         uvRate1: {
+//             value: new THREE.Vector2(1,1)
+//         }
+//     },
+//     vertexShader: vertex,
+//     fragmentShader: fragment
+// })
 
 // Mesh
 const plane = new THREE.Mesh(geometry, material)
+plane.clipIntersection = true
 scene.add(plane)
 plane.rotation.x = 181;
 
@@ -58,12 +75,10 @@ const sizes = {
     height: window.innerHeight
 }
 
-const renderer = new THREE.WebGLRenderer({antialiasing: true, alpha: true})
+const renderer = new THREE.WebGLRenderer({ antialiasing: true, alpha: true })
 document.querySelector('#canvas').appendChild(renderer.domElement);
-
-
 renderer.setSize(sizes.width, sizes.height)
-// renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+
 
 window.addEventListener('resize', () => {
     // Update sizes
@@ -81,10 +96,45 @@ window.addEventListener('resize', () => {
 
 // Base camera
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
-camera.position.x = 0
-camera.position.y = 0
-camera.position.z = 2
+
+camera.position.set(0,0,2)
 scene.add(camera)
+
+function lerp(x, y, a) {
+    return (1 - a) * x + a * y
+}
+
+function scalePercent(start, end) {
+    return (scrollPercent - start) / (end - start)
+}
+
+// Animations
+const animationScripts = []
+
+//add an animation that flashes the cube through 100 percent of scroll
+// animationScripts.push({
+//     start: 0,
+//     end: 21,
+//     func: () => {
+//         camera.lookAt(plane.position)
+//         camera.position.set(0,0,2.5)
+
+//         plane.position.z = lerp(-10,0,scalePercent(-80,10))
+//         // plane.position.z += 0.1
+//     },
+// })
+
+// animationScripts.push({
+//     start: 20,
+//     end: 100,
+//     func: () => {
+//         camera.lookAt(plane.position.x, plane.position.y + 0.1, plane.position.z)
+//         camera.position.set(0, 0 ,2.5)
+//         plane.position.z = lerp(-10,0,scalePercent(-80,10))
+//     },
+// })
+
+
 
 // Controls
 // const controls = new OrbitControls(camera, canvas)
@@ -94,35 +144,39 @@ scene.add(camera)
 
 
 
-document.addEventListener('mousemove',animateTerrain);
+document.addEventListener('mousemove', getMousePos);
 
 let mouseY = 0
 let mouseX = 0
 
-function animateTerrain(event){
+function getMousePos(event) {
     mouseY = event.clientY;
     mouseX = event.clientX;
 }
 
-const clock = new THREE.Clock()
+function playScrollAnimations() {
+    animationScripts.forEach((a) => {
+        if (scrollPercent >= a.start && scrollPercent < a.end) {
+            a.func()
+        }
+    })
+}
+
+let scrollPercent = 0
+
+document.body.onscroll = () => {
+    //calculate the current scroll progress as a percentage
+    scrollPercent = ((document.documentElement.scrollTop || document.body.scrollTop) /((document.documentElement.scrollHeight || document.body.scrollHeight) - document.documentElement.clientHeight)) * 100;
+}
+
+// const clock = new THREE.Clock()
 
 const tick = () => {
+    plane.rotation.z += 0.0005;
 
-    const elapsedTime = clock.getElapsedTime()
+    playScrollAnimations()
 
-    // plane.material.displacementScale = 0.4 + mouseY * 0.0002;
-
-    // Update objects
-    plane.rotation.z += 0.002;
-    // cube.rotation.y += 0.01;
-
-    // Update Orbital Controls
-    // controls.update()
-
-    // Render
     renderer.render(scene, camera)
-
-    // Call tick again on the next frame
     window.requestAnimationFrame(tick)
 }
 
