@@ -80,8 +80,12 @@ const sizes = {
     height: window.innerHeight
 }
 
-const renderer = new THREE.WebGLRenderer({ antialiasing: true, alpha: true })
+const renderer = new THREE.WebGLRenderer({
+     antialiasing: true, alpha: true 
+    })
+
 document.querySelector('#canvas').appendChild(renderer.domElement);
+
 renderer.setSize(sizes.width, sizes.height)
 
 

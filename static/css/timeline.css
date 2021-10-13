@@ -4,9 +4,8 @@
   padding: 0;
   box-sizing: border-box;
 }
-body {
+.timeline {
   font-family: 'K2D', sans-serif;
-  background: #1e1e2f;
   letter-spacing: 1px;
 }
 .container {
@@ -82,7 +81,7 @@ p {
   border-radius: 50%;
 }
 .timeline .timeline-container .timeline-body {
-  background: #27293d;
+  background: #252536;
   border-radius: 3px;
   padding: 20px 20px 15px;
   box-shadow: 1px 3px 9px rgba(0, 0, 0, 0.1);
