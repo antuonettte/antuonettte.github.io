@@ -1,3 +1,6 @@
+gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
+gsap.defaults({ease: "none"});
+
 var done = false;
 
 $(document).ready(()=>{
@@ -78,3 +81,6 @@ function type() {
     css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
     document.body.appendChild(css);
 };
+
+
+

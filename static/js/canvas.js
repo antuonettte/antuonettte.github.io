@@ -24,7 +24,7 @@ const material = new THREE.MeshStandardMaterial({
     color: 'gray',
     map: texture,
     displacementMap: height,
-    displacementScale: .5,
+    displacementScale: 1,
     alphaMap: alpha,
     transparent: true,
     wireframe: true
@@ -51,6 +51,11 @@ const plane = new THREE.Mesh(geometry, material)
 plane.clipIntersection = true
 scene.add(plane)
 plane.rotation.x = 181;
+
+// Axis Helper
+
+// const axesHelper = new THREE.AxesHelper( 1 );
+// scene.add( axesHelper );
 
 
 
@@ -97,7 +102,7 @@ window.addEventListener('resize', () => {
 // Base camera
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
 
-camera.position.set(0,0,2)
+camera.position.set(0,0,3)
 scene.add(camera)
 
 function lerp(x, y, a) {
@@ -111,7 +116,7 @@ function scalePercent(start, end) {
 // Animations
 const animationScripts = []
 
-//add an animation that flashes the cube through 100 percent of scroll
+// // add an animation that flashes the cube through 100 percent of scroll
 // animationScripts.push({
 //     start: 0,
 //     end: 21,
@@ -128,9 +133,10 @@ const animationScripts = []
 //     start: 20,
 //     end: 100,
 //     func: () => {
-//         camera.lookAt(plane.position.x, plane.position.y + 0.1, plane.position.z)
-//         camera.position.set(0, 0 ,2.5)
-//         plane.position.z = lerp(-10,0,scalePercent(-80,10))
+//         camera.position.x = lerp(0, 5, scalePercent(60, 80))
+//         camera.position.y = lerp(1, 5, scalePercent(60, 80))
+//         camera.lookAt(plane.position)
+//         // plane.position.y = lerp(-10,0,scalePercent(-80,10))
 //     },
 // })
 

@@ -56,9 +56,6 @@ nav {
 
 .canvas {
     position: fixed;
-    /* top: 0;
-    width: 100vw;
-    height: 100vh; */ 
 }
 
 .nav-links {
@@ -137,64 +134,63 @@ nav {
     overflow: hidden ;
 }
 
+hr{
+    background: white;
+}
+
 .intro-text {
     color: white ;
     font-family: 'Oswald', sans-serif ;
 }
 
 section {
-    height: 100vh;
+    min-height: 100vh;
     margin: 40 0px;
     color: black;
     display: flex;
     align-items: center;
     justify-content: center;
 }
+/* section .projects{
+    height: 100%;
+} */
 
 /* projects */
 
-.carousel {
-    width: 53%;
-    background-color: slateblue;
+.svg {
+    z-index: 2;
+    max-width: 600px;
+    overflow: visible;
+    margin-right: auto;
+    margin-top: 40vh;
+  }
+
+  
+.svg > text{
+    fill: white;
+    font-size: 15px;
 }
 
-.card {
-    height: 400px;
-    /* background-color: ; */
-    padding-top: 20px;
-    color: black;
-    border-radius: 10%;
+.ball {
+    fill: white;
+    /* visibility: hidden; */
 }
 
-.projectTitle {
-    padding-top: 50px;
-    margin: 0 auto;
-    color: white;
+.line {
+    fill: none;
+    stroke: white;
+    stroke-width: 2px;
 }
 
-.container-fluid .row .col-md .project{
-    position: relative;
-    margin: 10px 0px;
-    overflow-y: hidden;
+@media screen and (max-width: 800px) {
+    .svg{
+        max-width: 70%;
+    }
+    .svg > text{
+        fill: white;
+        font-size: 40px !important;
+    }
 }
-
-.project-caption{
-    width: 100%;
-    text-align: center;
-    position: absolute;
-    bottom:0;
-    left:0;
-    /* background-color: slateblue; */
-}
-
-.projectTitle:hover {
-    color: slateblue;
-}
-
-.container-fluid {
-    display: none;
-}
-
 
 
 /* About */
@@ -313,6 +309,9 @@ section {
 
 
 @media (max-width: 800px) {
+    section{
+        overflow-x: hidden;
+    }
     .container-fluid {
         display: contents;
     }
@@ -321,11 +320,6 @@ section {
     }
     .desc{
         font-size: 15px;
-    }
-    .projects{
-        height: 100%;
-        margin: 0 50px;
-        overflow-x: hidden;
     }
     .projectTitle {
         margin-bottom: 20px;
@@ -341,6 +335,7 @@ section {
     }
     .nav-links {
         margin-top: 30vh;
+        display: none ;
         width: 400px;
         transform: translateX(-40%) rotate(90deg);
         list-style: none;
