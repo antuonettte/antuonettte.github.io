@@ -31,7 +31,7 @@ p {
   top: 0;
   width: 4px;
   height: 100%;
-  background: #27293d;
+  background: #2e2e2e;
 }
 .timeline .timeline-container {
   position: relative;
@@ -46,7 +46,7 @@ p {
   border-radius: 50%;
   text-align: center;
   font-size: 2rem;
-  background: #4f537b;
+  background: #4c4c4d;
 }
 .timeline-icon a{
   color: white;
@@ -81,7 +81,7 @@ p {
   border-radius: 50%;
 }
 .timeline .timeline-container .timeline-body {
-  background: #252536;
+  background: #2b2b2cee;
   border-radius: 3px;
   padding: 20px 20px 15px;
   box-shadow: 1px 3px 9px rgba(0, 0, 0, 0.1);
