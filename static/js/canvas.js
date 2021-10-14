@@ -16,7 +16,7 @@ const canvas = document.querySelector('#canvas')
 const scene = new THREE.Scene()
 
 // Objects
-const geometry = new THREE.PlaneBufferGeometry(10, 10, 200, 200)
+const geometry = new THREE.PlaneBufferGeometry(10, 10, 150, 150)
 
 // Materials
 
@@ -120,35 +120,7 @@ function scalePercent(start, end) {
 // Animations
 const animationScripts = []
 
-// // add an animation that flashes the cube through 100 percent of scroll
-// animationScripts.push({
-//     start: 0,
-//     end: 21,
-//     func: () => {
-//         camera.lookAt(plane.position)
-//         camera.position.set(0,0,2.5)
 
-//         plane.position.z = lerp(-10,0,scalePercent(-80,10))
-//         // plane.position.z += 0.1
-//     },
-// })
-
-// animationScripts.push({
-//     start: 20,
-//     end: 100,
-//     func: () => {
-//         camera.position.x = lerp(0, 5, scalePercent(60, 80))
-//         camera.position.y = lerp(1, 5, scalePercent(60, 80))
-//         camera.lookAt(plane.position)
-//         // plane.position.y = lerp(-10,0,scalePercent(-80,10))
-//     },
-// })
-
-
-
-// Controls
-// const controls = new OrbitControls(camera, canvas)
-// controls.enableDamping = true
 
 
 
@@ -183,6 +155,10 @@ document.body.onscroll = () => {
 
 const tick = () => {
     plane.rotation.z += 0.0005;
+
+    
+    // material.displacementScale = mouseY * 0.002;
+
 
     playScrollAnimations()
 

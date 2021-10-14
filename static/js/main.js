@@ -1,27 +1,35 @@
-gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
+gsap.registerPlugin(ScrollTrigger);
 gsap.defaults({ease: "none"});
 
 var done = false;
 
 $(document).ready(()=>{
-    var tl = gsap.timeline({
+    animations();
+});
+
+function animations(){
+    var intro = gsap.timeline({
         onComplete: function(){
             $('.intro').addClass('hidden')
             type();
         }
     })
-
-    tl.from('.hide', { opacity: 0, duration: 1, y: -50, stagger: 0.6})
+    intro.from('.hide', { opacity: 0, duration: 1, y: -50, stagger: 0.6})
     .to('.intro', {opacity: 0, duration: 1})
     .from('.big-text, .canvas', { opacity: 0, duration: 1, stagger: 0.6 })
     .from('nav', { duration: 1, x: -50 })
-});
 
-
-$( '.carousel' ).carousel({
-    pause: 'hover',
-    ride: 'carousel'
-},);
+    var links = gsap.timeline({
+        scrollTrigger:{
+            trigger: '.about',
+            toggleActions: 'restart none restart none',
+            start: 'top center',
+            markers: true
+        }
+    })
+    links.from('.content > a', { opacity: 0, delay: 0.5, duration: 1.5, x: -100, stagger: 0.6})
+    
+}
 
 
 var TxtType = function(el, toRotate, period) {

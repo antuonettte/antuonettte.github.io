@@ -193,9 +193,9 @@ section {
 }
 
 .content p {
-    /* font-family: 'Quicksand', sans-serif; */
-    font-weight: 300;
-    font-size: 23px
+    color: white;
+    font-weight: 500;
+    font-size: 22px
 }
 
 .email {
