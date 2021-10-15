@@ -124,6 +124,10 @@ section {
     justify-content: center;
 }
 
+.projects{
+    padding-bottom: 200px !important;
+}
+
 
 .svg {
     z-index: 2;
