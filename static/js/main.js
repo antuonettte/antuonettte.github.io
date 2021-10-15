@@ -3,9 +3,10 @@ gsap.defaults({ease: "none"});
 
 var done = false;
 
-$(document).ready(()=>{
+// $(document).ready(()=>{
+
     animations();
-});
+// });
 
 function animations(){
     var intro = gsap.timeline({
