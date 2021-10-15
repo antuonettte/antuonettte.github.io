@@ -14,7 +14,8 @@ function animations(){
             type();
         }
     })
-    intro.from('.hide', { opacity: 0, duration: 1, y: -50, stagger: 0.6})
+    intro.to('.hide', {opacity: 0})
+    .from('.hide', { opacity: 0, duration: 1, y: -50, stagger: 0.6})
     .to('.intro', {opacity: 0, duration: 1})
     .from('.big-text, .canvas', { opacity: 0, duration: 1, stagger: 0.6 })
     .from('nav', { duration: 1, x: -50 })
@@ -24,7 +25,7 @@ function animations(){
             trigger: '.about',
             toggleActions: 'restart none restart none',
             start: 'top center',
-            markers: true
+            markers: false
         }
     })
     links.from('.content > a', { opacity: 0, delay: 0.5, duration: 1.5, x: -100, stagger: 0.6})
