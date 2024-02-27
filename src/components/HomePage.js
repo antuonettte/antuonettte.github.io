@@ -1,11 +1,12 @@
 import React from 'react';
+import ProjectCard from './ProjectCard';
 
 const HomePage = () => {
   return (
     <div>
       <h1>Testing pipeline</h1>
       <p>Here are some of my projects:</p>
-      {/* Render your ProjectCards here */}
+      {<ProjectCard title="test" description="test" link="test"/>}
     </div>
   );
 };
