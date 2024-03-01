@@ -1,0 +1,224 @@
+/* HomePage.css */
+
+/* Apply default styles */
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+body, html {
+    margin: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Homepage container */
+.homepage-container {
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+}
+
+
+header {
+    background-color: var(--foreground);
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.desktop-menu{
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+}
+
+
+main {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+
+.project-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+
+.project-card {
+    background-color: var(--foreground);
+    color: var(--background);
+    padding: 20px;
+    border-radius: 5px;
+    flex: 1;
+    max-width: 300px;
+}
+
+.project-card a {
+    color: var(--background);
+}
+
+
+footer {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+:root {
+    --bar-width: 50px;
+    --bar-height: 8px;
+    --hamburger-gap: 6px;
+    --foreground: #333;
+    --background: white;
+    --hamburger-margin: 5px;
+    --animation-timing: 200ms ease-in-out;
+    --hamburger-height: calc(var(--bar-height) * 3 + var(--hamburger-gap) * 2)
+}
+
+
+
+@media (min-width: 769px) {
+
+    /* Hide mobile menu on desktop */
+    .mobile-menu {
+        display: none;
+    }
+}
+
+/* Media query for mobile devices */
+@media (max-width: 767px) {
+
+    main {
+        align-items: center;
+    }
+
+
+    header {
+        background-color: transparent;
+        padding: 1.5rem;
+        display: flex;
+        justify-content: space-between;
+        /* Align navigation and hamburger menu */
+        align-items: center;
+        /* Center vertically */
+    }
+
+    .project-cards {
+        display: flex;
+        justify-content: center;
+    }
+
+    .desktop-menu {
+        display: none;
+    }
+
+    .menu-toggle {
+        --x-width: calc(var(--hamburger-height) * 1.41421356237);
+        display: none;
+        flex-flow: column;
+        gap: var(--hamburger-gap);
+        width: max-content;
+        position: fixed;
+        top: var(--hamburger-margin);
+        left: var(--hamburger-margin);
+        z-index: 10;
+        cursor: pointer
+    }
+    
+    .menu-toggle:has(input:checked) {
+        --foreground: white;
+        --background: #333;
+    }
+    
+    .menu-toggle::before,
+    .menu-toggle::after,
+    .menu-toggle input {
+        content: "";
+        width: var(--bar-width);
+        height: var(--bar-height);
+        background-color: var(--foreground);
+        border-radius: 9999px;
+        transform-origin: left center;
+        transition: opacity var(--animation-timing), width var(--animation-timing),
+            rotate var(--animation-timing), translate var(--animation-timing),
+            background-color var(--animation-timing);
+    }
+    
+    .menu-toggle input {
+        appearance: none;
+        padding: 0;
+        margin: 0;
+        outline: none;
+        pointer-events: none;
+    }
+    
+    
+    
+    .menu-toggle:has(input:checked)::before {
+        rotate: 45deg;
+        width: var(--x-width);
+        translate: 0 calc(var(--bar-height) / -2);
+    
+    }
+    
+    .menu-toggle:has(input:checked)::after {
+        rotate: -45deg;
+        width: var(--x-width);
+        translate: 0 calc(var(--bar-height) / 2);
+    }
+    
+    .menu-toggle input:checked {
+        opacity: 0;
+        width: 0;
+    }
+    
+
+
+
+    .mobile-sidebar {
+        transition: translate var(--animation-timing);
+        translate: -100%;
+        padding: 0.5rem 1rem;
+        padding-top: calc(var(--hamburger-height) + var(--hamburger-margin) + 1rem);
+        background-color: var(--foreground);
+        color: var(--background);
+        max-width: 10rem;
+        min-height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+
+    .menu-toggle:has(input:checked)+.mobile-sidebar {
+        translate: 0;
+    }
+
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .mobile-menu nav a {
+        display: block;
+        color: var(--background);
+        text-decoration: none;
+        margin-bottom: 10px;
+    }
+}
