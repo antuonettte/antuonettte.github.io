@@ -1,0 +1,16 @@
+:root{
+    --cavnas-height: 100vh;
+    --canvas-width: 100vw;
+}
+
+.canvas{
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: var(--cavnas-height);
+    width: var(--canvas-width);
+    z-index: -1;
+}
+
