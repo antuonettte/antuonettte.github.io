@@ -8,9 +8,21 @@ import Scene from '../components/3d/Scene'
 
 const Home = () => {
 
-    useEffect(()=>{
-        const canvas = document.getElementById('canvas')
-    })
+    useEffect(() => {
+        // Add event listener for the 'Escape' key press
+        const handleKeyDown = (event) => {
+            if (event.key === 'Escape') {
+                document.exitPointerLock(); // Release pointer lock
+            }
+        };
+
+        document.addEventListener('keydown', handleKeyDown);
+
+        return () => {
+            // Clean up event listener
+            document.removeEventListener('keydown', handleKeyDown);
+        };
+    }, []);
 
     
     return (
@@ -30,11 +42,10 @@ const Home = () => {
                     ]}>
                     <Canvas id='canvas'shadows camera={{ fove: 50 }} className='canvas' onKeyDown={(e)=>{console.log(e)}}>
                         <Sky sunPosition={[100, 20, 100]} />
-                        <ambientLight intensity={0.3} />
+                        <ambientLight intensity={1} />
                         <pointLight castShadow intensity={0.8} position={[100, 100, 100]} />
                         <Physics gravity={[0, -30, 0]}>
-                            <Scene scale={0.1}/>
-                            
+                            <Scene scale={1}/>
                             <Player />
                         </Physics>
                         <PointerLockControls />

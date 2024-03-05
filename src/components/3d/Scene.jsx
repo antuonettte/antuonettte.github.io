@@ -5,8 +5,8 @@ import ModelLoader from './ModelLoader'
 function Scene(props) {
     return (
         <RigidBody {...props} type="fixed" colliders="trimesh">
-            <MeshCollider url={"assets/midieval.glb"}/>
-            <ModelLoader url={"assets/midieval.glb"} position={[0, -30, 0]}></ModelLoader>
+            <MeshCollider url={"assets/vr_gallery4k.glb"}/>
+            <ModelLoader url={"assets/vr_gallery4k.glb"} position={[0, 0, 0]}></ModelLoader>
         </RigidBody>
     )
 }
