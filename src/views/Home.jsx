@@ -1,35 +1,28 @@
-import { KeyboardControls, PointerLockControls, Sky } from '@react-three/drei'
-import { Canvas } from '@react-three/fiber'
-import { Physics, RigidBody } from '@react-three/rapier'
-import React, { useEffect } from 'react'
-import { Player } from '../components/3d/Player'
-import '../css/Home.css'
-import Scene from '../components/3d/Scene'
+import React, { Suspense, useEffect, useRef } from 'react';
+import { KeyboardControls, PointerLockControls, Sky, Stats, Text } from '@react-three/drei';
+import { Canvas } from '@react-three/fiber';
+import { Physics } from '@react-three/rapier';
+import { Player } from '../components/3d/Player';
+import Scene from '../components/3d/Scene';
+import '../css/Home.css';
+import TextDisplay from '../components/3d/TextDisplay';
+import { useHelper } from '@react-three/drei';
+import { PointLightHelper } from 'three'
+
 
 const Home = () => {
 
-    useEffect(() => {
-        // Add event listener for the 'Escape' key press
-        const handleKeyDown = (event) => {
-            if (event.key === 'Escape') {
-                document.exitPointerLock(); // Release pointer lock
-            }
-        };
+    const Light = ({...props}) => {
+        const ref = useRef()
+        // useHelper(ref, PointLightHelper, 1)
+      
+        return <pointLight ref={ref}  {...props} />
+      }
 
-        document.addEventListener('keydown', handleKeyDown);
-
-        return () => {
-            // Clean up event listener
-            document.removeEventListener('keydown', handleKeyDown);
-        };
-    }, []);
-
-    
     return (
-        <section >
-
-
+        <section>
             <div>
+                <Stats />
                 <KeyboardControls
                     map={[
                         { name: "forward", keys: ["ArrowUp", "w", "W"] },
@@ -38,22 +31,30 @@ const Home = () => {
                         { name: "right", keys: ["ArrowRight", "d", "D"] },
                         { name: "jump", keys: ["Space"] },
                         { name: 'run', keys: ['Shift'] },
-                        { name: 'crouch', keys: ['ControlLeft']}
-                    ]}>
-                    <Canvas id='canvas'shadows camera={{ fove: 50 }} className='canvas' onKeyDown={(e)=>{console.log(e)}}>
-                        <Sky sunPosition={[100, 20, 100]} />
-                        <ambientLight intensity={1} />
-                        <pointLight castShadow intensity={0.8} position={[100, 100, 100]} />
-                        <Physics gravity={[0, -30, 0]}>
-                            <Scene scale={1}/>
-                            <Player />
-                        </Physics>
+                        { name: 'crouch', keys: ['ControlLeft'] }
+                    ]}
+                >
+                    <div className="crosshair" />
+
+                    <Canvas onPointerDown={(e) => e.target.requestPointerLock()} shadows camera={{ fov: 50 }} className='canvas' onKeyDown={(e) => { console.log(e) }}>
+                        {/* <Sky sunPosition={[100, 20, 100]} /> */}
+                        <ambientLight intensity={0.5} />
+                        <Light intensity={50} position={[0,3,0]}/>
+                        <Suspense>
+                            <TextDisplay text="Test" />
+                            <Physics gravity={[0, -2, 0]}>
+                                <Scene scale={1} />
+                                <Player />
+                            </Physics>
+
+                        </Suspense>
                         <PointerLockControls />
+                        <axesHelper />
                     </Canvas>
                 </KeyboardControls>
             </div>
         </section>
-    )
-}
+    );
+};
 
-export default Home
+export default Home;
