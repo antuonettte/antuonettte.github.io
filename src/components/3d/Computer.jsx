@@ -1,22 +1,22 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import { useFrame, useLoader } from "@react-three/fiber";
-import { Html, Wireframe } from '@react-three/drei';
-import { RigidBody } from '@react-three/rapier';
+import {  useLoader } from "@react-three/fiber";
+import { Html } from '@react-three/drei';
+import '../../css/Projects.css'
+import { useNavigate } from 'react-router-dom';
 
 
-const Computer = ({ ...props }) => {
+const Computer = ({ position, handleClick, ...props }) => {
     const gltf = useLoader(GLTFLoader, 'assets/computer.glb');
 
-    const handleClick =() =>{
-        console.log("clicked")
-    }
+    // const navigate = useNavigate()
+
+    // const handleClick = () => {
+    //     navigate('/projects')
+    // }
 
     return (
-        
-            <primitive onClick={handleClick} object={gltf.scene} {...props} />
-        
-
+            <primitive  onClick={handleClick} object={gltf.scene} position={position} {...props} />
     )
 }
 

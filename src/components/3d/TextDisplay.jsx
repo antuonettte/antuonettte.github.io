@@ -5,6 +5,7 @@ import myFont from '../../assests/Roboto_Regular.json'
 import { Center, Html, Text3D } from '@react-three/drei'
 import { useRef } from 'react'
 
+
 extend({ TextGeometry })
 
 const TextDisplay = () => {
@@ -16,26 +17,23 @@ const TextDisplay = () => {
   });
 
   return (
+    <group position={[0, 1.9, -4.7]}>
+      
+      <Center ref={textRef} >
+        <Text3D
+          font={myFont}
+          lineHeight={0.5}
+          size={0.1}
+          scale={[1, 1, 0.2]}
+        >
 
-    // <group position={[-0.24, 1.9, -4.7]} rotation={[0, 0, 0]} ref={groupRef}>
-      <Center ref={textRef} position={[0, 1.9, -4.7]}>
-      <Text3D
-        font={myFont}
-        lineHeight={0.5}
-        size={0.1}
-        scale={[1, 1, 0.2]}
-      >
-        {/* <Html>
-          <div className="frame">
-            Projects
-          </div>
-        </Html> */}
-        {`Projects\n\nClick Me`}
-        <meshLambertMaterial attach='material' color={'gray'} />
-      </Text3D>
+          {`Projects\n\nClick Me`}
+          <meshLambertMaterial attach='material' color={'gray'} />
+        </Text3D>
       </Center>
+    </group>
 
-    // </group>
+
 
 
 
