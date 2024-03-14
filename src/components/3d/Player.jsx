@@ -1,8 +1,8 @@
 import * as THREE from "three"
-import { useRef} from "react"
+import { useRef } from "react"
 import { useFrame } from "@react-three/fiber"
 import { useKeyboardControls } from "@react-three/drei"
-import { CapsuleCollider, RigidBody} from "@react-three/rapier"
+import { CapsuleCollider, RigidBody } from "@react-three/rapier"
 
 const SPEED = 5
 const direction = new THREE.Vector3()
@@ -28,8 +28,8 @@ export function Player({ lerp = THREE.MathUtils.lerp }) {
         direction.subVectors(frontVector, sideVector).normalize().multiplyScalar(SPEED).applyEuler(state.camera.rotation)
 
         playerRef.current.setLinvel({ x: direction.x, y: velocity.y, z: direction.z })
-   
-        if (jump ) {
+
+        if (jump) {
             playerRef.current.setLinvel({ x: 0, y: 7, z: 0 })
             grounded.current = false;
         }
@@ -37,19 +37,16 @@ export function Player({ lerp = THREE.MathUtils.lerp }) {
 
     })
     return (
-        <>
-            <RigidBody ref={playerRef} gravityScale={9.8} colliders={false}  type="dynamic" position={[2,1,0]} enabledRotations={[false, false, false]} onCollisionEnter={(e) => {
-                console.log(e.rigidBodyObject)
-                if(e.rigidBodyObject.id === 73){
-                    console.log('grounded')
-                    grounded.current = true
-                }
-            }}>
-                <mesh>
-
+        <RigidBody ref={playerRef} gravityScale={9.8} colliders={false} type="dynamic" position={[2, 1, 0]} enabledRotations={[false, false, false]} onCollisionEnter={(e) => {
+            // console.log(e.rigidBodyObject)
+            if (e.rigidBodyObject.id === 73) {
+                // console.log('grounded')
+                grounded.current = true
+            }
+        }}>
+            <mesh>
                 <CapsuleCollider args={[1.2, 0.5]} />
-                </mesh>
-            </RigidBody>
-        </>
+            </mesh>
+        </RigidBody>
     )
 }

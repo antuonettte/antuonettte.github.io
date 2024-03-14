@@ -24,3 +24,9 @@
     transform: translate3d(-50%, -50%, 0);
     border: 2px solid white;
 }
+
+.loader{
+    position: absolute;
+    z-index: 10 !important;
+
+}

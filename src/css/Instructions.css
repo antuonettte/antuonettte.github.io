@@ -1,0 +1,47 @@
+#instructions {
+    background-color: rgba(0, 0, 0, 0.5);
+    top: 50%;
+    left: 50%;
+    height: 500px;
+    width: 600px;
+    margin-top: -250px;
+    margin-left: -300px;
+    position: absolute;
+    font-size: 24px;
+    font-family: monospace;
+    color: white;
+    text-align: center;
+    pointer-events: none;
+    user-select: none;
+    z-index: 1;
+  }
+  
+  #instructions a {
+    color: white;
+    pointer-events: auto;
+  }
+  
+  #instructions button {
+    font-size: 24px;
+    pointer-events: auto;
+  }
+  
+  .show {
+    transition: opacity 1s linear;
+    opacity: 1;
+  }
+  .hide {
+    transition: opacity 0.25s linear;
+    opacity: 0;
+  }
+  
+  kbd {
+    padding: 0px 4px;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 4px;
+    background: grey;
+    font-size: 19px;
+    color: white;
+    font-family: monospace;
+    font-style: normal;
+  }

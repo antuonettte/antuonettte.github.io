@@ -8,7 +8,7 @@ import { useRef } from 'react'
 
 extend({ TextGeometry })
 
-const TextDisplay = () => {
+const TextDisplay = ({text, scale, position}) => {
 
   const textRef = useRef()
   useFrame((state, delta) => {
@@ -17,17 +17,16 @@ const TextDisplay = () => {
   });
 
   return (
-    <group position={[0, 1.9, -4.7]}>
+    <group position={position}>
       
       <Center ref={textRef} >
         <Text3D
           font={myFont}
           lineHeight={0.5}
           size={0.1}
-          scale={[1, 1, 0.2]}
+          scale={scale}
         >
-
-          {`Projects\n\nClick Me`}
+          {text}
           <meshLambertMaterial attach='material' color={'gray'} />
         </Text3D>
       </Center>
