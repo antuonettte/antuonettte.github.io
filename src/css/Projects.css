@@ -1,0 +1,54 @@
+/* src/ProjectPage.css */
+
+.project-page {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  .project-section {
+    margin-bottom: 40px;
+  }
+  
+  .project-section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .project-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .project-info {
+    flex: 1;
+    margin-right: 20px;
+  }
+  
+  .project-info p {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  .project-info a {
+    font-size: 1rem;
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .project-info a:hover {
+    text-decoration: underline;
+  }
+  
+  .project-media img {
+    width: 300px;
+    height: auto;
+  }
+  
+  .project-3d {
+    width: 100%;
+    height: 300px;
+    margin-top: 20px;
+  }
+  
