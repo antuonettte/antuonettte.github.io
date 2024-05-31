@@ -8,6 +8,7 @@ import { Box } from '@react-three/drei';
 const Projects = ({ projects }) => {
   return (
     <div className="project-page">
+      
       {projects.map((project, index) => (
         <div className="project-section" key={index}>
           <h2>{project.title}</h2>
