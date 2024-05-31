@@ -8,7 +8,7 @@ import Projects from './views/Projects'
 
 const projects = [
   {
-    title: "Project 1",
+    title: "Car APP",
     description: "This is the description for Project 1.",
     image: "link_to_image1.jpg",
     github: "https://github.com/user/project1",
