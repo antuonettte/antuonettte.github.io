@@ -1,7 +1,7 @@
 // src/ProjectPage.js
 
 import React from 'react';
-import './ProjectPage.css';
+import '../css/Projects';
 
 const Projects = ({ projects }) => {
   return (
