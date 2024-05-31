@@ -1,14 +1,27 @@
 // src/ProjectPage.js
 
-import React from 'react';
-import '../css/Projects.css';
-import { Canvas } from '@react-three/fiber';
-import { Box } from '@react-three/drei';
+import React, { useRef } from 'react';
+import './ProjectPage.css';
+import { Canvas, useFrame } from '@react-three/fiber';
+
+const RotatingSphere = () => {
+  const sphereRef = useRef();
+  
+  useFrame(() => {
+    sphereRef.current.rotation.y += 0.01;
+  });
+
+  return (
+    <mesh ref={sphereRef}>
+      <sphereGeometry args={[1, 32, 32]} />
+      <meshStandardMaterial color="white" />
+    </mesh>
+  );
+};
 
 const Projects = ({ projects }) => {
   return (
     <div className="project-page">
-      
       {projects.map((project, index) => (
         <div className="project-section" key={index}>
           <h2>{project.title}</h2>
@@ -27,9 +40,7 @@ const Projects = ({ projects }) => {
             <Canvas>
               <ambientLight />
               <pointLight position={[10, 10, 10]} />
-              <Box>
-                <meshStandardMaterial attach="material" color="orange" />
-              </Box>
+              <RotatingSphere />
             </Canvas>
           </div>
         </div>
