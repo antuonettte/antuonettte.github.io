@@ -1,0 +1,143 @@
+.wrapper {
+  background: #f8f9fa;
+  font-family: 'DM Sans', sans-serif;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Nav */
+.nav {
+  background: #1a2e4a;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  color: #fff;
+  font-weight: 500;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logoIcon {
+  width: 22px;
+  height: 22px;
+  background: #f59e0b;
+  border-radius: 4px;
+}
+
+.navLinks {
+  display: flex;
+  gap: 16px;
+}
+
+.navLinks span {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.navLinks span:hover {
+  color: #fff;
+}
+
+/* Hero */
+.hero {
+  background: linear-gradient(135deg, #1a2e4a 0%, #2d4f7c 100%);
+  padding: 28px 20px;
+}
+
+.heroText h3 {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.heroText p {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 11px;
+  max-width: 280px;
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+
+.btn {
+  background: #f59e0b;
+  color: #1a2e4a;
+  border: none;
+  padding: 8px 18px;
+  font-size: 11px;
+  font-weight: 500;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.btn:hover {
+  opacity: 0.88;
+}
+
+.trust {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.trustItem {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 10px;
+}
+
+/* Service cards */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  padding: 16px 20px;
+  background: #f8f9fa;
+}
+
+.card {
+  background: #fff;
+  border-radius: 6px;
+  padding: 14px;
+  border: 0.5px solid #e5e7eb;
+}
+
+.cardIcon {
+  width: 28px;
+  height: 28px;
+  background: #eff6ff;
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+
+.card h4 {
+  font-size: 11px;
+  font-weight: 500;
+  color: #1a2e4a;
+  margin-bottom: 4px;
+}
+
+.card p {
+  font-size: 10px;
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+@media (max-width: 560px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .navLinks {
+    display: none;
+  }
+}
