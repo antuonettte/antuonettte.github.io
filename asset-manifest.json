@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/antuonettte.github.io/static/css/main.5e948005.css",
-    "main.js": "/antuonettte.github.io/static/js/main.f57707ae.js",
-    "index.html": "/antuonettte.github.io/index.html",
-    "main.5e948005.css.map": "/antuonettte.github.io/static/css/main.5e948005.css.map",
-    "main.f57707ae.js.map": "/antuonettte.github.io/static/js/main.f57707ae.js.map"
+    "main.css": "/static/css/main.5e948005.css",
+    "main.js": "/static/js/main.f57707ae.js",
+    "index.html": "/index.html",
+    "main.5e948005.css.map": "/static/css/main.5e948005.css.map",
+    "main.f57707ae.js.map": "/static/js/main.f57707ae.js.map"
   },
   "entrypoints": [
     "static/css/main.5e948005.css",
