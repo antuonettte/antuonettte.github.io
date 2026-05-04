@@ -1,0 +1,134 @@
+.wrapper {
+  padding-top: var(--nav-h);
+  min-height: 100vh;
+}
+
+.headerSection {
+  padding-bottom: 1rem;
+}
+
+.sub {
+  color: var(--muted);
+  font-size: 0.95rem;
+  max-width: 480px;
+  margin-top: 0.75rem;
+}
+
+/* ── Grid ── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 220px;
+  gap: 1px;
+  background: var(--border);
+  margin-top: 3rem;
+}
+
+.item {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-end;
+  padding: 1.25rem;
+}
+
+.span2 {
+  grid-column: span 2;
+}
+
+/* Hover on bg layer */
+.bg {
+  position: absolute;
+  inset: 0;
+  opacity: 0.6;
+  transition: opacity 0.3s, transform 0.4s;
+}
+
+.item:hover .bg {
+  opacity: 0.85;
+  transform: scale(1.04);
+}
+
+/* ── Color themes per card ── */
+.g1 .bg { background: linear-gradient(135deg, #0d1b2a, #1a3a5c, #0077b6); }
+.g2 .bg { background: linear-gradient(135deg, #0a0a1a, #2d1b69, #7b61ff); }
+.g3 .bg { background: linear-gradient(135deg, #0d1f0d, #1a4a1a, #00c853); }
+.g4 .bg { background: linear-gradient(135deg, #1a0d00, #4a2800, #ff8c00); }
+.g5 .bg { background: linear-gradient(135deg, #1a0a0a, #4a1a1a, #e53935); }
+.g6 .bg { background: linear-gradient(135deg, #0a1a1a, #0d3a3a, #00e5ff); }
+
+/* ── Card elements ── */
+.tag {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid rgba(0, 229, 255, 0.3);
+  padding: 4px 10px;
+  background: rgba(10, 10, 15, 0.7);
+  backdrop-filter: blur(4px);
+  z-index: 1;
+}
+
+.info {
+  position: relative;
+  z-index: 1;
+  background: rgba(10, 10, 15, 0.85);
+  padding: 10px 14px;
+  backdrop-filter: blur(8px);
+  flex: 1;
+}
+
+.info h3 {
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--text);
+  margin-bottom: 3px;
+}
+
+.info p {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+/* ── CTA Strip ── */
+.cta {
+  padding: 1.5rem 2.5rem;
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+  text-align: center;
+}
+
+.cta p {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+}
+
+.cta a {
+  color: var(--accent);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.cta a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 700px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .span2 {
+    grid-column: span 1;
+  }
+}
