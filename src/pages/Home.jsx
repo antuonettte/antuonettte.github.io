@@ -24,8 +24,8 @@ const services = [
 
 const stats = [
   { value: '100%', label: 'Custom built' },
-  { value: '<2s', label: 'Load time target' },
-  { value: '10+', label: 'Years engineering' },
+  { value: '<3s', label: 'Load time target' },
+  { value: '4+', label: 'Years engineering' },
 ];
 
 export default function Home({ onNavigate }) {

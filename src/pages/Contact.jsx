@@ -66,7 +66,7 @@ export default function Contact() {
 
             <div className={styles.pricing}>
               <div className={styles.pricingLabel}>// starting from</div>
-              <div className={styles.price}>$800</div>
+              <div className={styles.price}>$500</div>
               <div className={styles.priceSub}>5-page business website</div>
             </div>
           </div>

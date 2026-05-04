@@ -4,7 +4,7 @@ import styles from './About.module.css';
 const skills = [
   'React / Next.js', 'TypeScript', 'Node.js', 'Python',
   'PostgreSQL', 'REST APIs', 'AWS / Cloud', 'CI/CD',
-  'Tailwind CSS', 'Performance', 'Git / GitHub', 'Accessibility',
+   'Performance', 'Git / GitHub'
 ];
 
 const badges = [
@@ -25,7 +25,7 @@ export default function About() {
           {/* Left: bio */}
           <div className={styles.aboutText}>
             <p>
-              Turner Technologies was founded on a simple premise: small businesses deserve
+              I started Turner Technologies on a simple premise: small businesses deserve
               websites built to the same standard as enterprise software — performant,
               accessible, and built to last.
             </p>
