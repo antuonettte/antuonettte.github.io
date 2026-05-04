@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/antuonettte.github.io/static/css/main.1f43493c.css",
+    "main.js": "/antuonettte.github.io/static/js/main.b9fd3387.js",
+    "index.html": "/antuonettte.github.io/index.html",
+    "main.1f43493c.css.map": "/antuonettte.github.io/static/css/main.1f43493c.css.map",
+    "main.b9fd3387.js.map": "/antuonettte.github.io/static/js/main.b9fd3387.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1f43493c.css",
+    "static/js/main.b9fd3387.js"
+  ]
+}
