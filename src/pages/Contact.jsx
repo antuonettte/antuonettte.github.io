@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useForm, ValidationError } from '@formspree/react';
 import styles from './Contact.module.css';
 
 const projectTypes = [
@@ -11,26 +12,7 @@ const projectTypes = [
 ];
 
 export default function Contact() {
-  const [submitted, setSubmitted] = useState(false);
-  const [form, setForm] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    business: '',
-    projectType: '',
-    message: '',
-  });
-
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // TODO: wire up to your backend / form service (e.g. Formspree, EmailJS, etc.)
-    console.log('Form submitted:', form);
-    setSubmitted(true);
-  };
+  const [state, handleSubmit] = useForm('xdabggad');
 
   return (
     <div className={styles.wrapper}>
@@ -42,7 +24,8 @@ export default function Contact() {
         </h2>
 
         <div className={styles.grid}>
-          {/* ── LEFT: info ── */}
+
+          {/* ── LEFT: info panel ── */}
           <div className={styles.info}>
             <h3>Get a free consultation</h3>
             <p>
@@ -52,7 +35,6 @@ export default function Contact() {
 
             <div className={styles.detail}>
               <div className={styles.detailIcon}>@</div>
-              {/* TODO: replace with your actual email */}
               <span>hello@turnertech.co</span>
             </div>
             <div className={styles.detail}>
@@ -71,9 +53,9 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* ── RIGHT: form ── */}
+          {/* ── RIGHT: form or success ── */}
           <div>
-            {submitted ? (
+            {state.succeeded ? (
               <div className={styles.success}>
                 <div className={styles.successIcon}>✦</div>
                 <h3>Message received.</h3>
@@ -81,61 +63,57 @@ export default function Contact() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className={styles.form}>
+
                 <div className={styles.formRow}>
                   <div className={styles.formGroup}>
-                    <label>First name</label>
+                    <label htmlFor="firstName">First name</label>
                     <input
+                      id="firstName"
                       type="text"
-                      name="firstName"
+                      name="FirstName"
                       placeholder="Jane"
-                      value={form.firstName}
-                      onChange={handleChange}
                       required
                     />
+                    <ValidationError field="FirstName" prefix="First name" errors={state.errors} className={styles.fieldError} />
                   </div>
                   <div className={styles.formGroup}>
-                    <label>Last name</label>
+                    <label htmlFor="lastName">Last name</label>
                     <input
+                      id="lastName"
                       type="text"
-                      name="lastName"
+                      name="LastName"
                       placeholder="Smith"
-                      value={form.lastName}
-                      onChange={handleChange}
                       required
                     />
+                    <ValidationError field="LastName" prefix="Last name" errors={state.errors} className={styles.fieldError} />
                   </div>
                 </div>
 
                 <div className={styles.formGroup}>
-                  <label>Email</label>
+                  <label htmlFor="email">Email</label>
                   <input
+                    id="email"
                     type="email"
-                    name="email"
+                    name="Email"
                     placeholder="jane@yourbusiness.com"
-                    value={form.email}
-                    onChange={handleChange}
                     required
                   />
+                  <ValidationError field="Email" prefix="Email" errors={state.errors} className={styles.fieldError} />
                 </div>
 
                 <div className={styles.formGroup}>
-                  <label>Business name</label>
+                  <label htmlFor="business">Business name</label>
                   <input
+                    id="business"
                     type="text"
-                    name="business"
+                    name="Business"
                     placeholder="Smith Consulting"
-                    value={form.business}
-                    onChange={handleChange}
                   />
                 </div>
 
                 <div className={styles.formGroup}>
-                  <label>Project type</label>
-                  <select
-                    name="projectType"
-                    value={form.projectType}
-                    onChange={handleChange}
-                  >
+                  <label htmlFor="projectType">Project type</label>
+                  <select id="projectType" name="projectType">
                     <option value="">Select one...</option>
                     {projectTypes.map((t) => (
                       <option key={t} value={t}>{t}</option>
@@ -144,21 +122,29 @@ export default function Contact() {
                 </div>
 
                 <div className={styles.formGroup}>
-                  <label>Tell me about your project</label>
+                  <label htmlFor="message">Tell me about your project</label>
                   <textarea
+                    id="message"
                     name="message"
                     placeholder="What does your business do? What problem are you trying to solve? Any timeline or budget in mind?"
-                    value={form.message}
-                    onChange={handleChange}
                   />
+                  <ValidationError field="message" prefix="Message" errors={state.errors} className={styles.fieldError} />
                 </div>
 
-                <button type="submit" className={styles.submitBtn}>
-                  Send Inquiry →
+                {/* Top-level form error (e.g. network failure) */}
+                <ValidationError errors={state.errors} className={styles.formError} />
+
+                <button
+                  type="submit"
+                  className={styles.submitBtn}
+                  disabled={state.submitting}
+                >
+                  {state.submitting ? 'Sending...' : 'Send Inquiry →'}
                 </button>
               </form>
             )}
           </div>
+
         </div>
       </div>
     </div>

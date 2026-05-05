@@ -190,3 +190,30 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* ── Formspree validation errors ── */
+.fieldError {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  color: #e53935;
+  margin-top: 5px;
+}
+
+.formError {
+  display: block;
+  font-size: 0.82rem;
+  color: #e53935;
+  background: rgba(229, 57, 53, 0.08);
+  border: 1px solid rgba(229, 57, 53, 0.25);
+  padding: 10px 14px;
+  margin-bottom: 1rem;
+}
+
+/* Disable state on submit button */
+.submitBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: var(--muted);
+}
