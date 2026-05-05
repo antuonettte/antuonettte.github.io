@@ -1,19 +1,22 @@
+/* ── Base nav bar ── */
 .nav {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 100;
+  z-index: 200;
   height: var(--nav-h);
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 2.5rem;
-  background: rgba(10, 10, 15, 0.85);
+  background: rgba(10, 10, 15, 0.92);
   backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border);
 }
 
+/* ── Logo ── */
 .logo {
   font-family: var(--mono);
   font-size: 1rem;
@@ -24,11 +27,10 @@
   align-items: center;
   gap: 10px;
   user-select: none;
+  z-index: 1;
 }
 
-.dot {
-  color: var(--accent);
-}
+.dot { color: var(--accent); }
 
 .logoMark {
   width: 28px;
@@ -39,6 +41,7 @@
   flex-shrink: 0;
 }
 
+/* ── Desktop nav links ── */
 .navLinks {
   display: flex;
   align-items: center;
@@ -57,15 +60,10 @@
   cursor: pointer;
 }
 
-.navLinks a:hover,
-.navLinks a.active {
-  color: var(--accent);
-}
+.navLinks a:hover { color: var(--accent); }
+.active { color: var(--accent) !important; }
 
-.active {
-  color: var(--accent) !important;
-}
-
+/* ── Desktop CTA button ── */
 .navCta {
   font-family: var(--mono);
   font-size: 0.75rem;
@@ -80,17 +78,153 @@
   clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
   transition: opacity 0.2s;
 }
+.navCta:hover { opacity: 0.85; }
 
-.navCta:hover {
-  opacity: 0.85;
+/* ── Hamburger — hidden on desktop ── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  z-index: 1;
 }
 
-@media (max-width: 700px) {
-  .navLinks {
-    gap: 1rem;
-  }
+.bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: transform 0.28s ease, opacity 0.28s ease;
+  transform-origin: center;
+}
 
+/* Animate to X */
+.barTop  { transform: translateY(7px) rotate(45deg); }
+.barMid  { opacity: 0; transform: scaleX(0); }
+.barBot  { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── Mobile drawer ── */
+.drawer {
+  position: fixed;
+  top: var(--nav-h);
+  left: 0;
+  right: 0;
+  z-index: 190;
+  background: rgba(10, 10, 15, 0.98);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 1.5rem 2rem;
+  gap: 1.5rem;
+
+  /* Hidden by default */
+  transform: translateY(-110%);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.28s ease;
+}
+
+.drawerOpen {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: all;
+}
+
+.drawerLinks {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.drawerLinks li {
+  border-bottom: 1px solid var(--border);
+}
+
+.drawerLinks a {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0;
+  font-family: var(--mono);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--muted);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.18s;
+}
+
+.drawerLinks a:hover { color: var(--text); }
+.drawerActive { color: var(--accent) !important; }
+
+.drawerNum {
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  opacity: 0.5;
+  margin-top: 2px;
+}
+.drawerActive .drawerNum { color: var(--accent); opacity: 0.7; }
+
+.drawerCta {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--bg);
+  background: var(--accent);
+  border: none;
+  padding: 14px 24px;
+  cursor: pointer;
+  clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+  transition: opacity 0.2s;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+.drawerCta:hover { opacity: 0.85; }
+
+/* ── Backdrop ── */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  top: var(--nav-h);
+  z-index: 180;
+  background: rgba(0, 0, 0, 0.5);
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Responsive breakpoints ── */
+@media (max-width: 700px) {
   .nav {
     padding: 0 1.25rem;
   }
+
+  /* Hide desktop elements */
+  .navLinks { display: none; }
+  .navCta   { display: none; }
+
+  /* Show hamburger */
+  .hamburger { display: flex; }
+}
+
+@media (min-width: 701px) {
+  /* Always hide drawer on desktop */
+  .drawer   { display: none; }
+  .backdrop { display: none; }
 }
