@@ -100,7 +100,7 @@ export default function Gallery({ onNavigate }) {
         <div className="section-label">// work</div>
         <h2>Projects &amp;<br />case studies.</h2>
         <p className={styles.sub}>
-          A selection of recent builds — from local service businesses to
+          A selection of example sites — from local service businesses to
           professional portfolios. Click any card to preview.
         </p>
       </div>
