@@ -7,6 +7,7 @@ import EmberAndOak   from '../snippets/EmberAndOak';
 import KestrelRealty from '../snippets/KestrelRealty';
 import SynkAnalytics from '../snippets/SynkAnalytics';
 import DrElainePark  from '../snippets/DrElainePark';
+import ApexAutoDetail from '../snippets/ApexAutoDetail';
 
 const projects = [
   {
@@ -49,13 +50,14 @@ const projects = [
     accent: '#e53935',
     component: KestrelRealty,
   },
+  
   {
-    id: 'synk',
-    title: 'Synk Analytics',
-    description: 'Marketing site for a B2B analytics platform with pricing and demo CTA.',
-    tag: 'SaaS',
+    id: 'autodetail',
+    title: 'Apex Auto Detail',
+    description: 'Mobile detailing site with packages, add-ons, and booking.',
+    tag: 'Automotive',
     accent: '#3b82f6',
-    component: SynkAnalytics,
+    component: ApexAutoDetail,
   },
 ];
 
