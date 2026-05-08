@@ -35,7 +35,7 @@ export default function Contact() {
 
             <div className={styles.detail}>
               <div className={styles.detailIcon}>@</div>
-              <span>hello@turnertech.co</span>
+              <span>antonio@turnertechsolutions.com</span>
             </div>
             <div className={styles.detail}>
               <div className={styles.detailIcon}>#</div>
