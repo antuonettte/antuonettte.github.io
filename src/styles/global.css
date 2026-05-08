@@ -97,10 +97,10 @@ body {
   line-height: 1.1;
 }
 
-/* Page transition */
-.page-enter {
+/* Page transition ***CAUSING BREAKING ON MODAL POSITION FIXED>*/
+/* .page-enter {
   animation: fadeIn 0.35s ease forwards;
-}
+} */
 
 @keyframes fadeIn {
   from {

@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './Gallery.module.css';
 
-import ApexPlumbing  from '../snippets/ApexPlumbing';
-import BloomStudio   from '../snippets/BloomStudio';
-import EmberAndOak   from '../snippets/EmberAndOak';
-import KestrelRealty from '../snippets/KestrelRealty';
-import SynkAnalytics from '../snippets/SynkAnalytics';
-import DrElainePark  from '../snippets/DrElainePark';
+import ApexPlumbing   from '../snippets/ApexPlumbing';
+import BloomStudio    from '../snippets/BloomStudio';
+import EmberAndOak    from '../snippets/EmberAndOak';
+import KestrelRealty  from '../snippets/KestrelRealty';
+import DrElainePark   from '../snippets/DrElainePark';
 import ApexAutoDetail from '../snippets/ApexAutoDetail';
 
 const projects = [
@@ -50,7 +49,6 @@ const projects = [
     accent: '#e53935',
     component: KestrelRealty,
   },
-  
   {
     id: 'autodetail',
     title: 'Apex Auto Detail',
@@ -64,26 +62,31 @@ const projects = [
 function Modal({ project, onClose }) {
   const Preview = project.component;
 
-  React.useEffect(() => {
-    const prev = document.body.style.overflow;
+  useEffect(() => {
+    // Lock body scroll
     document.body.style.overflow = 'hidden';
     const onKey = (e) => { if (e.key === 'Escape') onClose(); };
     window.addEventListener('keydown', onKey);
     return () => {
-      document.body.style.overflow = prev;
+      document.body.style.overflow = '';
       window.removeEventListener('keydown', onKey);
     };
   }, [onClose]);
 
   return (
-    <div className={styles.modalBackdrop} onClick={(e) => e.target === e.currentTarget && onClose()}>
+    <div
+      className={styles.modalBackdrop}
+      onClick={(e) => e.target === e.currentTarget && onClose()}
+    >
       <div className={styles.modal}>
         <div className={styles.modalHeader}>
-          <div>
+          <div className={styles.modalMeta}>
+            <span className={styles.modalTag}>{project.tag}</span>
             <div className={styles.modalTitle}>{project.title}</div>
-            <div className={styles.modalDesc}>{project.description}</div>
           </div>
-          <button className={styles.modalClose} onClick={onClose}>✕</button>
+          <button className={styles.modalClose} onClick={onClose} aria-label="Close">
+            ✕
+          </button>
         </div>
         <div className={styles.modalBody}>
           <Preview />
@@ -103,14 +106,14 @@ export default function Gallery({ onNavigate }) {
         <h2>Projects &amp;<br />case studies.</h2>
         <p className={styles.sub}>
           A selection of example sites — from local service businesses to
-          professional portfolios. Click any card to preview.
+          professional portfolios. Tap any card to preview.
         </p>
       </div>
 
       <div className={styles.grid}>
         {projects.map((p) => (
           <div key={p.id} className={styles.card} onClick={() => setActive(p)}>
-            <div className={styles.accent} style={{ background: p.accent }} />
+            <div className={styles.accentBar} style={{ background: p.accent }} />
             <div className={styles.cardTag}>{p.tag}</div>
             <div className={styles.cardTitle}>{p.title}</div>
             <div className={styles.cardDesc}>{p.description}</div>
