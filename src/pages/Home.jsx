@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './Home.module.css';
 
 const services = [
+  
+];
+
+const stats = [
+  { value: '100%', label: 'Custom built' },
+  { value: '<3s', label: 'Load time target' },
+  { value: '3+', label: 'Years engineering' },
+];
+
+const otherServices = [
   {
     icon: '{ }',
     title: 'Custom Development',
@@ -20,17 +30,58 @@ const services = [
     description:
       'Monthly retainer plans for updates, performance monitoring, and keeping your site sharp.',
   },
-];
-
-const stats = [
-  { value: '100%', label: 'Custom built' },
-  { value: '<3s', label: 'Load time target' },
-  { value: '4+', label: 'Years engineering' },
+  {
+    icon: '◎',
+    title: 'Local SEO Setup',
+    description:
+      'Google Business Profile optimisation, local keyword targeting, and schema markup so nearby customers find you first.',
+    tag: 'Most requested',
+  },
+  {
+    icon: '↗',
+    title: 'SEO Foundations',
+    description:
+      'Technical SEO audit, meta tags, sitemap, robots.txt, and Core Web Vitals fixes baked in at launch — not bolted on later.',
+    tag: null,
+  },
+  {
+    icon: '⬡',
+    title: 'Google Analytics & Search Console',
+    description:
+      'Full GA4 setup with conversion tracking, Search Console verification, and a plain-English dashboard you can actually use.',
+    tag: null,
+  },
+  {
+    icon: '◈',
+    title: 'Speed & Performance',
+    description:
+      'Image optimisation, lazy loading, caching, and CDN configuration. Fast sites rank higher and convert better.',
+    tag: null,
+  },
+  {
+    icon: '⊞',
+    title: 'Social Media Integration',
+    description:
+      'Open Graph tags, Twitter cards, and social share previews so your links look polished when shared anywhere.',
+    tag: null,
+  },
+  {
+    icon: '◻',
+    title: 'Domain & Hosting Setup',
+    description:
+      'DNS configuration, HTTPS, GitHub Pages or Vercel deployment, and custom domain hookup — fully handled.',
+    tag: null,
+  },
 ];
 
 export default function Home({ onNavigate }) {
+  const [expanded, setExpanded] = useState(false);
+
+  const visibleServices = expanded ? otherServices : otherServices.slice(0, 3);
+
   return (
     <div className={styles.wrapper}>
+
       {/* ── HERO ── */}
       <section className={styles.hero}>
         <div className={styles.heroGrid} />
@@ -71,7 +122,7 @@ export default function Home({ onNavigate }) {
         </div>
       </section>
 
-      {/* ── SERVICES STRIP ── */}
+      {/* ── CORE SERVICES STRIP ── *** CURENTLY EMPTY */}
       <div className={styles.servicesStrip}>
         {services.map((s) => (
           <div key={s.title} className={styles.serviceCard}>
@@ -81,6 +132,51 @@ export default function Home({ onNavigate }) {
           </div>
         ))}
       </div>
+
+      {/* ── OTHER SERVICES ── */}
+      <section className={styles.otherSection}>
+        <div className={styles.otherHeader}>
+          <div>
+            <div className={styles.otherLabel}>// Core Services</div>
+            <h2 className={styles.otherTitle}>
+              Everything your online<br />presence needs.
+            </h2>
+          </div>
+          <p className={styles.otherSub}>
+            Beyond the build — the digital foundations that make small businesses
+            discoverable, credible, and competitive.
+          </p>
+        </div>
+
+        <div className={styles.otherGrid}>
+          {visibleServices.map((s) => (
+            <div key={s.title} className={styles.otherCard}>
+              <div className={styles.otherCardTop}>
+                <div className={styles.otherIcon}>{s.icon}</div>
+                {s.tag && <span className={styles.otherTag}>{s.tag}</span>}
+              </div>
+              <h3 className={styles.otherCardTitle}>{s.title}</h3>
+              <p className={styles.otherCardDesc}>{s.description}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className={styles.otherFooter}>
+          <button
+            className={styles.expandBtn}
+            onClick={() => setExpanded((e) => !e)}
+          >
+            {expanded ? '↑ Show less' : '↓ See all services'}
+          </button>
+          <button
+            className={styles.ctaBtn}
+            onClick={() => onNavigate('contact')}
+          >
+            Get a Quote →
+          </button>
+        </div>
+      </section>
+
     </div>
   );
 }
