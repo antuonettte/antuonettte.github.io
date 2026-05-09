@@ -16,7 +16,7 @@ const otherServices = [
     icon: '{ }',
     title: 'Custom Development',
     description:
-      'Hand-coded sites built with modern frameworks React, Next.js, or clean HTML/CSS. No bloated page builders.',
+      'Hand-coded sites built with modern frameworks — React, Next.js, or clean HTML/CSS. No bloated page builders.',
   },
   {
     icon: '//',
