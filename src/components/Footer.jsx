@@ -10,8 +10,9 @@ export default function Footer({ onNavigate }) {
   return (
     <footer className={styles.footer}>
       <div className={styles.copy}>
-        © {year} Turner Technologies · Atlanta, GA
+        © {year} Turner Technologies · Alpharetta, GA
       </div>
+
       <ul className={styles.links}>
         {pages.map((page) => (
           <li key={page}>
@@ -19,6 +20,10 @@ export default function Footer({ onNavigate }) {
           </li>
         ))}
       </ul>
+
+      <div className={styles.legal}>
+        <a onClick={() => onNavigate('privacy')}>Privacy Policy</a>
+      </div>
     </footer>
   );
 }

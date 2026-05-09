@@ -1,0 +1,278 @@
+.wrapper {
+  padding-top: var(--nav-h);
+  min-height: 100vh;
+}
+
+/* ── Hero banner ── */
+.hero {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 4rem 2.5rem 3rem;
+}
+
+.heroContent {
+  max-width: 760px;
+}
+
+.title {
+  font-family: var(--mono);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  line-height: 1.05;
+  margin-top: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.metaDivider {
+  color: var(--border);
+}
+
+.intro {
+  font-size: 0.95rem;
+  color: rgba(240, 240, 248, 0.8);
+  line-height: 1.75;
+  margin-bottom: 0.75rem;
+}
+
+.intro a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.intro a:hover {
+  text-decoration: underline;
+}
+
+.introSub {
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* ── Body layout ── */
+.body {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 0;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 4rem 2.5rem;
+  align-items: start;
+}
+
+/* ── TOC ── */
+.toc {
+  position: sticky;
+  top: calc(var(--nav-h) + 2rem);
+  padding-right: 2.5rem;
+  border-right: 1px solid var(--border);
+}
+
+.tocLabel {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.tocList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.tocList li a {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 6px 0;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.03em;
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border);
+  transition: color 0.2s;
+  line-height: 1.5;
+}
+
+.tocList li:last-child a {
+  border-bottom: none;
+}
+
+.tocList li a:hover {
+  color: var(--accent);
+}
+
+.tocNum {
+  color: var(--accent);
+  font-size: 0.65rem;
+  flex-shrink: 0;
+}
+
+/* ── Sections ── */
+.sections {
+  padding-left: 3rem;
+}
+
+.section {
+  padding-bottom: 3rem;
+  margin-bottom: 3rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.section:last-of-type {
+  border-bottom: none;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 1.25rem;
+}
+
+.sectionNum {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.sectionTitle {
+  font-family: var(--mono);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+/* Prose styles */
+.sectionContent p {
+  font-size: 0.9rem;
+  color: rgba(240, 240, 248, 0.75);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.sectionContent p:last-child {
+  margin-bottom: 0;
+}
+
+.sectionContent h3 {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--text);
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.sectionContent ul {
+  list-style: none;
+  padding: 0;
+  margin: 0.75rem 0 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sectionContent ul li {
+  font-size: 0.9rem;
+  color: rgba(240, 240, 248, 0.75);
+  line-height: 1.7;
+  padding-left: 1.25rem;
+  position: relative;
+}
+
+.sectionContent ul li::before {
+  content: '//';
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  color: var(--accent);
+  position: absolute;
+  left: 0;
+  top: 3px;
+}
+
+.sectionContent strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.sectionContent a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.sectionContent a:hover {
+  text-decoration: underline;
+}
+
+.lastUpdated {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+  font-style: italic;
+}
+
+/* ── Responsive ── */
+@media (max-width: 800px) {
+  .body {
+    grid-template-columns: 1fr;
+    padding: 2.5rem 1.25rem;
+  }
+
+  .toc {
+    position: static;
+    padding-right: 0;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 2rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .tocList {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+  }
+
+  .sections {
+    padding-left: 0;
+  }
+
+  .hero {
+    padding: 3rem 1.25rem 2rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .tocList {
+    grid-template-columns: 1fr;
+  }
+}
