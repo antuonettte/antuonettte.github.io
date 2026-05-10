@@ -34,7 +34,7 @@ const otherServices = [
     icon: '◎',
     title: 'Local SEO Setup',
     description:
-      'Google Business Profile optimisation, local keyword targeting, and schema markup so nearby customers find you first.',
+      'Google Business Profile optimization, local keyword targeting, and schema markup so nearby customers find you first.',
     tag: 'Most requested',
   },
   {
