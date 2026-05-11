@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './Home.module.css';
-
+// Empty currently but will be used to highlight 3-4 core services on the homepage, with the option to expand and show the full list of otherServices below.
 const services = [
   
 ];
@@ -34,7 +34,7 @@ const otherServices = [
     icon: '◎',
     title: 'Local SEO Setup',
     description:
-      'Google Business Profile optimisation, local keyword targeting, and schema markup so nearby customers find you first.',
+      'Google Business Profile optimization, local keyword targeting, and schema markup so nearby customers find you first.',
     tag: 'Most requested',
   },
   {

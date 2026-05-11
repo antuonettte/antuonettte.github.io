@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Gallery from './pages/Gallery';
 import Contact from './pages/Contact';
+import PrivacyPolicy from './pages/PrivacyPolicy';
 import './styles/global.css';
 
 const pageMap = {
@@ -12,6 +13,7 @@ const pageMap = {
   about: About,
   gallery: Gallery,
   contact: Contact,
+  privacy: PrivacyPolicy,
 };
 
 export default function App() {
