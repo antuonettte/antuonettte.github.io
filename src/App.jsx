@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { BrowserRouter, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -8,33 +9,58 @@ import Contact from './pages/Contact';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import './styles/global.css';
 
-const pageMap = {
-  home: Home,
-  about: About,
-  gallery: Gallery,
-  contact: Contact,
-  privacy: PrivacyPolicy,
-};
+/* Inner app — has access to router context */
+function AppInner() {
+  const navigate = useNavigate();
+  const location = useLocation();
 
-export default function App() {
-  const [activePage, setActivePage] = useState('home');
-
-  const navigate = (page) => {
-    setActivePage(page);
+  const onNavigate = (page) => {
+    const routes = {
+      home:    '/',
+      about:   '/about',
+      gallery: '/work',
+      contact: '/contact',
+      privacy: '/privacy',
+    };
+    navigate(routes[page] || '/');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const PageComponent = pageMap[activePage];
+  // Derive active page key from current URL for navbar highlighting
+  const pathToPage = {
+    '/':        'home',
+    '/about':   'about',
+    '/work':    'gallery',
+    '/contact': 'contact',
+    '/privacy': 'privacy',
+  };
+  const activePage = pathToPage[location.pathname] || 'home';
 
   return (
     <>
-      <Navbar activePage={activePage} onNavigate={navigate} />
+      <Navbar activePage={activePage} onNavigate={onNavigate} />
 
-      <main key={activePage} className="page-enter">
-        <PageComponent onNavigate={navigate} />
+      <main key={location.pathname} className="page-enter">
+        <Routes>
+          <Route path="/"        element={<Home    onNavigate={onNavigate} />} />
+          <Route path="/about"   element={<About   onNavigate={onNavigate} />} />
+          <Route path="/work"    element={<Gallery onNavigate={onNavigate} />} />
+          <Route path="/contact" element={<Contact onNavigate={onNavigate} />} />
+          <Route path="/privacy" element={<PrivacyPolicy onNavigate={onNavigate} />} />
+          {/* Catch-all — redirect unknown URLs to home */}
+          <Route path="*"        element={<Home    onNavigate={onNavigate} />} />
+        </Routes>
       </main>
 
-      <Footer onNavigate={navigate} />
+      <Footer onNavigate={onNavigate} />
     </>
+  );
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <AppInner />
+    </BrowserRouter>
   );
 }
