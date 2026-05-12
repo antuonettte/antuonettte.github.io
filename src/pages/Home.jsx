@@ -99,7 +99,7 @@ export default function Home({ onNavigate }) {
 
           <p className={styles.heroSub}>
             Turner Technologies builds fast, modern websites for small businesses —
-            crafted by a software engineer who understands both the code and the craft.
+            crafted by a team who understands both the code and the craft.
           </p>
 
           <div className={styles.heroActions}>
