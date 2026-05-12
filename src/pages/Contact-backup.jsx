@@ -74,27 +74,6 @@ function ContactForm() {
               <div className={styles.successIcon}>✦</div>
               <h3>Message received.</h3>
               <p>Thanks for reaching out — I'll be in touch within 24 hours.</p>
-
-              <div className={styles.successDivider} />
-
-              <div className={styles.bookingPrompt}>
-                <div className={styles.bookingLabel}>// want to talk sooner?</div>
-                <p className={styles.bookingDesc}>
-                  Skip the back-and-forth — book a free 30-minute discovery
-                  call directly on my calendar.
-                </p>
-                <a
-                  href="https://calendly.com/antonio-turnertechsolutions/30min"
-                  target="_blank"
-                  rel="noreferrer"
-                  className={styles.bookingBtn}
-                >
-                  Book a Free Call →
-                </a>
-                <p className={styles.bookingNote}>
-                  Zoom link sent automatically on booking.
-                </p>
-              </div>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className={styles.form}>
