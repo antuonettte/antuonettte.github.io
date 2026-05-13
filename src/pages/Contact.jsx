@@ -61,10 +61,23 @@ function ContactForm() {
       <div className={styles.grid}>
         {/* LEFT */}
         <div className={styles.info}>
-          <h3>Get a free consultation</h3>
+          <h3>Schedule a free consultation</h3>
           <p>
-            Tell me about your project and I'll get back to you within 24 hours
+            Tell us about your project and We'll get back to you within 24 hours
             with thoughts, questions, and a rough scope.
+          </p>
+
+          <p>
+            Already have a website? Schedule a free site audit and understand where you can improve. <a
+                  href="https://calendly.com/antonio-turnertechsolutions/30min"
+                  target="_blank"
+                  rel="noreferrer"
+                  className={styles.auditBtn}
+                  
+                
+            >
+              Free audit
+              </a>
           </p>
 
           <div className={styles.detail}>
@@ -82,8 +95,8 @@ function ContactForm() {
 
           <div className={styles.pricing}>
             <div className={styles.pricingLabel}>// starting from</div>
-            <div className={styles.price}>$500</div>
-            <div className={styles.priceSub}>5-page business website</div>
+            <div className={styles.price}>$300</div>
+            <div className={styles.priceSub}>4-page business website with</div>
           </div>
         </div>
 
@@ -101,7 +114,7 @@ function ContactForm() {
                 <div className={styles.bookingLabel}>// want to talk sooner?</div>
                 <p className={styles.bookingDesc}>
                   Skip the back-and-forth — book a free 30-minute discovery
-                  call directly on my calendar.
+                  call directly on our calendar.
                 </p>
                 <a
                   href="https://calendly.com/antonio-turnertechsolutions/30min"
