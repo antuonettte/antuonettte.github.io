@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm, ValidationError } from '@formspree/react';
 import styles from './Contact.module.css';
 
@@ -32,6 +32,26 @@ const howItWorks = [
 /* ── Contact form ── */
 function ContactForm() {
   const [state, handleSubmit] = useForm('xdabggad');
+
+  // Fire Meta Pixel ViewContent when contact page loads
+    useEffect(() => {
+      if (typeof window.fbq === 'function') {
+        window.fbq('track', 'ViewContent', {
+          content_name: 'Contact Page',
+          content_category: 'Lead Generation',
+        });
+      }
+    }, []);
+  
+    // Fire Meta Pixel Lead event when form submits successfully
+    useEffect(() => {
+      if (state.succeeded && typeof window.fbq === 'function') {
+        window.fbq('track', 'Lead', {
+          content_name: 'Contact Form Submission',
+          content_category: 'Web Design Inquiry',
+        });
+      }
+    }, [state.succeeded]);
 
   return (
     <div className="section">
