@@ -37,7 +37,7 @@ function ContactForm() {
     useEffect(() => {
       if (typeof window.fbq === 'function') {
         window.fbq('track', 'ViewContent', {
-          content_name: 'Contact Page',
+          content_name: 'Contact',
           content_category: 'Lead Generation',
         });
       }
