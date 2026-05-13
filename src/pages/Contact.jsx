@@ -8,6 +8,8 @@ const projectTypes = [
   'Landing page',
   'E-commerce',
   'Ongoing maintenance',
+  'SEO optimization',
+  'Application development',
   'Other',
 ];
 
@@ -95,8 +97,8 @@ function ContactForm() {
 
           <div className={styles.pricing}>
             <div className={styles.pricingLabel}>// starting from</div>
-            <div className={styles.price}>$300</div>
-            <div className={styles.priceSub}>4-page business website with</div>
+            <div className={styles.price}>$300<span style={{ fontSize: '0.9rem' }}>/month</span></div>
+            <div className={styles.priceSub}>4-page business website</div>
           </div>
         </div>
 
